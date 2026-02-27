@@ -6,19 +6,20 @@ import { ProtectedRoute } from "./components/common/protectedRoutes";
 import { DashboardPage } from "./pages/dashboardPage";
 import { RoleRoute } from "./components/common/roleRoutes";
 import { DiagramEditorPage } from "./pages/dashboardEditorPage";
+import { ReactFlowProvider } from "@xyflow/react";
 
 export const AppRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Root route decides landing or dashboard */}
+        {/* Root */}
         <Route path="/" element={<LandingRoute />} />
 
-        {/* Auth pages */}
+        {/* Auth */}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
 
-        {/* Dashboard - protected */}
+        {/* Dashboard */}
         <Route
           path="/dashboard"
           element={
@@ -28,13 +29,29 @@ export const AppRouter = () => {
           }
         />
 
-        {/* Diagram editor - only editors */}
+        {/* 🔹 Create Diagram */}
         <Route
-          path="/editor/:diagramId"
+          path="/editor"
           element={
             <ProtectedRoute>
               <RoleRoute allowedRole="editor">
-                <DiagramEditorPage />
+                <ReactFlowProvider>
+                  <DiagramEditorPage />
+                </ReactFlowProvider>
+              </RoleRoute>
+            </ProtectedRoute>
+          }
+        />
+
+        {/* 🔹 Edit Diagram */}
+        <Route
+          path="/editor/:id"
+          element={
+            <ProtectedRoute>
+              <RoleRoute allowedRole="editor">
+                <ReactFlowProvider>
+                  <DiagramEditorPage />
+                </ReactFlowProvider>
               </RoleRoute>
             </ProtectedRoute>
           }

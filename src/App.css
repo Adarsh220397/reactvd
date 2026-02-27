@@ -1,42 +1,223 @@
+/* ============================= */
+/* GLOBAL RESET */
+/* ============================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+html,
+body,
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+/* Remove Vite template constraints */
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================= */
+/* COLORS */
+/* ============================= */
+
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1e40af;
+  --danger: #dc2626;
+  --gray-light: #f3f4f6;
+  --gray-border: #e5e7eb;
+  --text-dark: #111827;
+}
+
+/* ============================= */
+/* BUTTONS */
+/* ============================= */
+
+button {
+  cursor: pointer;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.button-primary {
+  background: var(--primary);
+  color: white;
+}
+
+.button-primary:hover {
+  background: var(--primary-dark);
+}
+
+.button-danger {
+  background: var(--danger);
+  color: white;
+}
+
+.button-outline {
+  background: white;
+  border: 1px solid var(--gray-border);
+}
+
+/* ============================= */
+/* FORM STYLING */
+/* ============================= */
+
+input {
+  padding: 10px 12px;
+  border: 1px solid var(--gray-border);
+  border-radius: 6px;
+  font-size: 14px;
+  width: 100%;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* ============================= */
+/* AUTH PAGES */
+/* ============================= */
+
+.auth-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--gray-light);
+}
+
+.auth-card {
+  background: white;
+  padding: 40px;
+  width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.auth-card h2 {
+  margin-bottom: 20px;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.auth-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+/* ============================= */
+/* DASHBOARD */
+/* ============================= */
+
+.dashboard-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--gray-light);
+}
+
+.dashboard-header {
+  background: white;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--gray-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-header .user-info {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.dashboard-content {
+  padding: 24px;
+}
+
+.diagram-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(25vw, 1fr));
+  gap: 20px;
+}
+
+.diagram-card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid var(--gray-border);
+  transition: 0.2s ease;
+}
+
+.diagram-card:hover {
+  transform: translateY(-4px);
+}
+
+.diagram-card h3 {
+  margin-bottom: 10px;
+}
+
+.diagram-actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+}
+
+/* ============================= */
+/* DIAGRAM EDITOR */
+/* ============================= */
+
+.editor-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.editor-header {
+  background: white;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--gray-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.editor-body {
+  flex: 1;
+  height: 100%;
+}
+
+.react-flow-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+
+@media (max-width: 768px) {
+  .auth-card {
+    width: 90%;
   }
-  to {
-    transform: rotate(360deg);
+
+  .dashboard-content {
+    padding: 16px;
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .diagram-grid {
+    grid-template-columns: 1fr;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
